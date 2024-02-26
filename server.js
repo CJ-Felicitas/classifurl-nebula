@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 
 app.get("/", (req, res) => {
-  console.log("Here");
+    const ip = req.ip || req.connection.remoteAddress;
+    console.log(`Request from IP: ${ip}`);
   res.send('🎯nebula🎯');
 });
 
