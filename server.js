@@ -12,7 +12,7 @@ db.once("open", () => console.log("Connected to Database"));
 
 app.use(express.json());
 const apiRouter = require('./routes/apiroutes');
-
+app.use('/api',apiRouter);
 
 // listening to the port ?
 const port_forward = 3000;
