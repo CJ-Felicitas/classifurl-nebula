@@ -30,7 +30,6 @@ router.get('/', (req, res) => {
     });
 });
 
-
 // POST route
 router.post('/submiturl', (req, res) => {
     console.log("Received POST request to submiturl");
@@ -43,8 +42,6 @@ router.post('/submiturl', (req, res) => {
     });
 });
 
-// POST route to report URL
-// POST route to report URL
 // POST route to report URL
 router.post('/reportURL', (req, res) => {
     console.log("reportURL");
