@@ -3,6 +3,13 @@ const router = express.Router();
 const bodyParser = require('body-parser'); 
 const mysql = require('mysql');
 
+// Middleware to log IP addresses
+router.use((req, res, next) => {
+    const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    console.log('Request from IP:', ipAddress);
+    next();
+});
+
 // test route
 router.get('/', (req, res) => {
     console.log("Test response for GET route");
