@@ -12,5 +12,21 @@ router.get('/', (req, res) => {
     });
 });
 
+// POST route
+router.post('/submiturl', (req, res) => {
+    console.log("Received POST request to submiturl");
+
+    // Assuming you want to access data sent in the request body
+    const url = req.bod.y.url;
+
+    // Here you can process the request data and perform necessary actions
+
+    // Sending a JSON response
+    res.json({
+        message: 'Received POST request to submiturl',
+        status: 'success',
+        data: url // Sending back the request data in response
+    });
+});
 
 module.exports = router;
