@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser'); 
+const mysql = require('mysql');
 
 // test route
 router.get('/', (req, res) => {
@@ -20,9 +21,7 @@ router.post('/submiturl', (req, res) => {
     // Assuming you want to access data sent in the request body
     const url = req.body.url;
 
-    // Here you can process the request data and perform necessary actions
 
-    // Sending a JSON response
     res.json({
         message: 'Received POST request to submiturl',
         status: 'success',
