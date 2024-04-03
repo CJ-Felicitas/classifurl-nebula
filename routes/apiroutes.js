@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser'); 
 const mysql = require('mysql');
+const axios = require('axios');
 
 // Create MySQL connection pool
 const pool = mysql.createPool({
@@ -31,17 +32,30 @@ router.get('/', (req, res) => {
 });
 
 // POST route
-router.post('/submiturl', (req, res) => {
+router.post('/submiturl', async (req, res) => {
     console.log("Received POST request to submiturl");
     // Assuming you want to access data sent in the request body
     const url = req.body.url;
-    res.json({
-        message: 'Received POST request to submiturl',
-        status: 'success',
-        data: url // Sending back the request data in response
-    });
+    try {
+        const response = await axios.post('http://127.0.0.1:5000/predict', { url });
+        console.log(response.data.received_data); // Log the response data
+        console.log(response.data.message);
+        // Sending a JSON response
+        res.json({
+            flask: response.data.message,
+            message: 'Received POST request to submiturl',
+            status: 'success',
+            data: response.data.received_data // Sending back the request data in response
+        });
+    } catch (error) {
+        console.error("Error making request to Flask:", error);
+        res.status(500).json({
+           
+            message: 'Error occurred while making request to Flask',
+            status: 'error'
+        });
+    }
 });
-
 // POST route to report URL
 router.post('/reportURL', (req, res) => {
     console.log("reportURL");
