@@ -11,8 +11,8 @@ exports.GetReportedUrlController = async (req, res) => {
         database: process.env.MYSQL_DATABASE,
     });
 
-    // perform a query to get all the data from the report_table
-    pool.query("SELECT * FROM report_table", (error, results, fields) => {
+    // perform a query to get all the data from the report_table and sort by report_count in descending order
+    pool.query("SELECT * FROM report_table ORDER BY report_count DESC", (error, results, fields) => {
         if (error) {
             console.error("Error getting data from report_table:", error);
             res.status(500).json({
@@ -26,5 +26,14 @@ exports.GetReportedUrlController = async (req, res) => {
                 data: results,
             });
         }
+        
+        // Close the database connection after the query is done
+        pool.end((err) => {
+            if (err) {
+                console.error("Error closing database connection:", err);
+            } else {
+                console.log("Database connection closed successfully");
+            }
+        });
     });
 };
