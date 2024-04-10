@@ -6,10 +6,10 @@ const mongoose = require("mongoose");
 const mysql = require("mysql");
 
 // MongoDB Connection
-mongoose.connect(process.env.DATABASE_URL);
-const db = mongoose.connection;
-db.on("error", (error) => console.error(error));
-db.once("open", () => console.log("Connected to MongoDB Atlas Database"));
+// mongoose.connect(process.env.DATABASE_URL);
+// const db = mongoose.connection;
+// db.on("error", (error) => console.error(error));
+// db.once("open", () => console.log("Connected to MongoDB Atlas Database"));
 
 const pool = mysql.createPool({
   connectionLimit: 10,

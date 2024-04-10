@@ -4,6 +4,7 @@ const router = express.Router();
 const {TestResponseController} = require('../controllers/TestResponseController');
 const {SubmitUrlController} = require('../controllers/SubmitUrlController');
 const {ReportUrlController} = require('../controllers/ReportUrlController');
+const { GetReportedUrlController } = require('../controllers/GetReportedUrlController');
 
 // Middleware to log IP addresses
 router.use((req, res, next) => {
@@ -20,5 +21,7 @@ router.post('/submiturl', SubmitUrlController);
 
 // report a url then record it to the MySQL database server
 router.post('/reporturl', ReportUrlController);
+
+router.get('/getreportedurl', GetReportedUrlController);
 
 module.exports = router;
