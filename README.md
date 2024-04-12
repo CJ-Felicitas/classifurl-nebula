@@ -27,4 +27,9 @@ To install and run [Classifurl-Nebula], follow these steps:
 ## Usage
 To start the server, run the following command:
 
-test two three
+```
+npm run devStart
+```
+
+## Contribute
+Submit a pull request if you want to contribute
