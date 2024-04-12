@@ -15,7 +15,7 @@ exports.GetReportedUrlController = async (req, res) => {
     });
 
     // perform a query to get all the data from the report_table and sort by report_count in descending order
-    pool.query("SELECT * FROM report_table ORDER BY report_count DESC", (error, results, fields) => {
+    pool.query("SELECT * FROM report_table ORDER BY report_count DESC LIMIT 10", (error, results, fields) => {
         if (error) {
             console.error("Error getting data from report_table:", error);
             res.status(500).json({
