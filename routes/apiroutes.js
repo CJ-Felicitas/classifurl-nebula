@@ -6,6 +6,8 @@ const {SubmitUrlController} = require('../controllers/SubmitUrlController');
 const {ReportUrlController} = require('../controllers/ReportUrlController');
 const { GetReportedUrlController } = require('../controllers/GetReportedUrlController');
 
+const { PullEvent } = require('../webhook/PullEvent');
+
 // Middleware to log IP addresses
 router.use((req, res, next) => {
     const ipAddress = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -23,5 +25,7 @@ router.post('/submiturl', SubmitUrlController);
 router.post('/reporturl', ReportUrlController);
 
 router.get('/getreportedurl', GetReportedUrlController);
+
+router.post('/pullEvent', PullEvent);
 
 module.exports = router;
