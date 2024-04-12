@@ -1,4 +1,3 @@
-
 const { exec } = require('child_process');
 
 exports.PullEvent = async (req, res) => {
@@ -6,9 +5,7 @@ exports.PullEvent = async (req, res) => {
   
     // Handle push event
     if (eventType === 'push') {
-      shutdownPM2();
       pullChanges();
-      startPM2();
     }
 };
 
@@ -21,27 +18,16 @@ function pullChanges() {
         return;
       }
       console.log(`Changes pulled successfully: ${stdout}`);
+      reloadPM2();
     });
   }
 
-  function shutdownPM2() {
-    exec('pm2 stop 0', (error, stdout, stderr) => {
+function reloadPM2() {
+    exec('pm2 reload 0', (error, stdout, stderr) => {
         if (error) {
-          console.error(`Error pm2 shutdown: ${error}`);
+          console.error(`Error reloading pm2: ${error}`);
           return;
         }
-        console.log(`pm2 stop 0 - done: ${stdout}`);
-      });
-  }
-
-  function startPM2() {
-    exec('pm2 start 0', (error, stdout, stderr) => {
-        if (error) {
-          console.error(`Error starting pm2 : ${error}`);
-          return;
-        }
-        console.log(`pm2 start 0 - done: ${stdout}`);
-      });
-  }
-
-
+        console.log(`PM2 reload 0 - done: ${stdout}`);
+    });
+}
