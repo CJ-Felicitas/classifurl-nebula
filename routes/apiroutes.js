@@ -24,8 +24,10 @@ router.post('/submiturl', SubmitUrlController);
 // report a url then record it to the MySQL database server
 router.post('/reporturl', ReportUrlController);
 
+// get all reported urls from the MySQL database server
 router.get('/getreportedurl', GetReportedUrlController);
 
+// Webhook to pull changes from GitHub repository
 router.post('/pullEvent', PullEvent);
 
 module.exports = router;
