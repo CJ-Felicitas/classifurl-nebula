@@ -7,6 +7,13 @@ exports.PullEvent = async (req, res) => {
     if (eventType === 'push') {
       pullChanges();
     }
+
+    // Sending a JSON response
+    res.json({
+        message: 'Pull event received',
+        status: 'success'
+    });
+    
 };
 
 // Function to pull changes from GitHub repository
