@@ -12,7 +12,7 @@ exports.PullEvent = async (req, res) => {
 // Function to pull changes from GitHub repository
 function pullChanges() {
     // Execute shell command to pull changes
-    exec('cd /var/www/classifurl-nebula/ && sudo git pull', (error, stdout, stderr) => {
+    exec('cd ~/var/www/classifurl-nebula/ && sudo git pull', (error, stdout, stderr) => {
       if (error) {
         console.error(`Error pulling changes: ${error}`);
         return;
