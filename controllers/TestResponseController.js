@@ -3,6 +3,7 @@ exports.TestResponseController = (req, res) => {
     // Sending a JSON response
     res.json({
         message: 'Test response from Nebula (Express) Server',
-        status: 'success'
+        status: 'success',
+        code: 200
     });
 };
