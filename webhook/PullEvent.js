@@ -18,16 +18,6 @@ function pullChanges() {
         return;
       }
       console.log(`Changes pulled successfully: ${stdout}`);
-      reloadPM2();
+
     });
   }
-
-function reloadPM2() {
-    exec('pm2 reload 0', (error, stdout, stderr) => {
-        if (error) {
-          console.error(`Error reloading pm2: ${error}`);
-          return;
-        }
-        console.log(`PM2 reload 0 - done: ${stdout}`);
-    });
-}
