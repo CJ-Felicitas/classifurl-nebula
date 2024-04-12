@@ -1,6 +1,7 @@
 const axios = require("axios");
 const mysql = require("mysql");
 
+
 exports.GetReportedUrlController = async (req, res) => {
     // connect to mysql and get all the data from the report_table
     console.log("Get reported URL route accessed");
