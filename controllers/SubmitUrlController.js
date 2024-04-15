@@ -5,7 +5,7 @@ exports.SubmitUrlController = async (req, res) => {
   const url = req.body.url;
   try {
     const response = await axios.post("http://127.0.0.1:5000/predict", { url });
-    console.log(response.data.received_data); // Log the response data
+    console.log(response.data.received_data); 
     console.log(response.data.message);
 
     const received_data = response.data.received_data;
@@ -15,7 +15,7 @@ exports.SubmitUrlController = async (req, res) => {
       flask: response.data.message,
       message: "I am from express server",
       status: "success",
-      data: received_data, // Sending back the request data in response
+      data: received_data, 
     });
   } catch (error) {
     console.error("Error making request to Flask:", error);

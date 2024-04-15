@@ -3,7 +3,6 @@ const mysql = require("mysql");
 
 
 exports.GetReportedUrlController = async (req, res) => {
-    // connect to mysql and get all the data from the report_table
     console.log("Get reported URL route accessed");
 
     const pool = mysql.createPool({
@@ -30,7 +29,7 @@ exports.GetReportedUrlController = async (req, res) => {
             });
         }
         
-        // Close the database connection after the query is done
+    // close query because server can't handle too many open connections  
         pool.end((err) => {
             if (err) {
                 console.error("Error closing database connection:", err);

@@ -13,14 +13,13 @@ const pool = mysql.createPool({
   database: process.env.MYSQL_DATABASE,
 });
 
-// Test the MySQL connection
 pool.getConnection((err, connection) => {
   if (err) {
     console.error("Database connection failed: " + err.stack);
     return;
   }
   console.log("Connected to MySQL database as ID " + connection.threadId);
-  connection.release(); // Release the connection
+  connection.release(); 
 });
 
 app.use(express.json());
