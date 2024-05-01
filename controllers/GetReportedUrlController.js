@@ -1,7 +1,4 @@
-const axios = require("axios");
 const mysql = require("mysql");
-
-
 exports.GetReportedUrlController = async (req, res) => {
     console.log("Get reported URL route accessed");
 
@@ -13,7 +10,7 @@ exports.GetReportedUrlController = async (req, res) => {
         database: process.env.MYSQL_DATABASE,
     });
 
-    // perform a query to get all the data from the report_table and sort by report_count in descending order
+    // get report count in descending order limited to 10 returns only
     pool.query("SELECT * FROM report_table ORDER BY report_count DESC LIMIT 10", (error, results, fields) => {
         if (error) {
             console.error("Error getting data from report_table:", error);
@@ -28,7 +25,6 @@ exports.GetReportedUrlController = async (req, res) => {
                 data: results,
             });
         }
-        
     // close query because server can't handle too many open connections  
         pool.end((err) => {
             if (err) {

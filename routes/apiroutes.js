@@ -5,7 +5,6 @@ const {TestResponseController} = require('../controllers/TestResponseController'
 const {SubmitUrlController} = require('../controllers/SubmitUrlController');
 const {ReportUrlController} = require('../controllers/ReportUrlController');
 const { GetReportedUrlController } = require('../controllers/GetReportedUrlController');
-
 const { PullEvent } = require('../webhook/PullEvent');
 
 // Middleware to log IP addresses

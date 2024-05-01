@@ -13,6 +13,14 @@ exports.ReportUrlController = async (req, res) => {
   console.log("report Url route accessed");
   const url = req.body.url;
 
+  // if (url === "") {
+  //   return res.json({
+  //     message: "URL is empty",
+  //     status: 400,
+  //     flask: "URL is empty please provide a valid URL",
+  //   });
+  // }
+
   // Check if the URL exists in the table
   pool.query(
     "SELECT * FROM report_table WHERE url = ?",
