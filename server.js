@@ -7,10 +7,10 @@ const mysql = require("mysql");
 
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: process.env.MYSQL_HOST,
-  user: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DATABASE,
+  host: "127.0.0.1",
+  user: "root",
+  password: "1234",
+  database: "classifurl"
 });
 
 pool.getConnection((err, connection) => {
@@ -28,6 +28,8 @@ app.use("/api", apiRouter);
 
 // listening to the port ?
 const port_forward = 3000;
-app.listen(port_forward, () => {
+const HOST = "0.0.0.0";
+
+app.listen(port_forward,HOST , () => {
   console.log("Server is listening for connections");
 });
